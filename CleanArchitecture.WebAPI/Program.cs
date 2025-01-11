@@ -1,4 +1,6 @@
+using CleanArchitecture.Application.Service;
 using CleanArchitecture.Persistence.Context;
+using CleanArchitecture.Persistence.Service;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -20,6 +22,8 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"));
 });
 
+
+builder.Services.AddScoped<ICarService, CarService>();
 
 var app = builder.Build();
 
